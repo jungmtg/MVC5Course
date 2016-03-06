@@ -38,6 +38,7 @@ namespace MVC5Course.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
+			//只顯示Create表單
             return View();
         }
 

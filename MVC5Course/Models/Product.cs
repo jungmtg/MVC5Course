@@ -29,7 +29,7 @@ namespace MVC5Course.Models
 
 		[Required]
 		[Range(2,99,ErrorMessage = "價格必須介於2-99")]
-
+		[DisplayFormat(DataFormatString = "{0:C}")]
 		public Nullable<decimal> Price { get; set; }
 		[Required]
 		public Nullable<bool> Active { get; set; }
