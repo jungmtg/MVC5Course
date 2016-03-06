@@ -192,7 +192,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Client.cs">
-      <DependentUpon>Fabrics.tt</DependentUpon>
+      <DependentUpon>FabricsModel1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Fabrics.Context.cs">
       <AutoGen>True</AutoGen>
@@ -209,26 +209,41 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Fabrics.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\FabricsModel1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FabricsModel1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FabricsModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FabricsModel1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FabricsModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FabricsModel1.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MemberViewModel.cs" />
     <Compile Include="Models\Occupation.cs">
-      <DependentUpon>Fabrics.tt</DependentUpon>
+      <DependentUpon>FabricsModel1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Order.cs">
-      <DependentUpon>Fabrics.tt</DependentUpon>
+      <DependentUpon>FabricsModel1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderLine.cs">
-      <DependentUpon>Fabrics.tt</DependentUpon>
+      <DependentUpon>FabricsModel1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>Fabrics.tt</DependentUpon>
+      <DependentUpon>FabricsModel1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usp_Fabrics_Result.cs">
-      <DependentUpon>Fabrics.tt</DependentUpon>
+      <DependentUpon>FabricsModel1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vwClientOrder.cs">
-      <DependentUpon>Fabrics.tt</DependentUpon>
+      <DependentUpon>FabricsModel1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -257,6 +272,16 @@
       <DependentUpon>Fabrics.edmx</DependentUpon>
       <LastGenOutput>Fabrics.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\FabricsModel1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FabricsModel1.edmx</DependentUpon>
+      <LastGenOutput>FabricsModel1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FabricsModel1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FabricsModel1.edmx</DependentUpon>
+      <LastGenOutput>FabricsModel1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="WebForm1.aspx" />
@@ -266,6 +291,13 @@
     </EntityDeploy>
     <Content Include="Models\Fabrics.edmx.diagram">
       <DependentUpon>Fabrics.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\FabricsModel1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FabricsModel1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FabricsModel1.edmx.diagram">
+      <DependentUpon>FabricsModel1.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -324,6 +356,7 @@
     <Content Include="Views\Test\MemberProfile.cshtml" />
     <Content Include="Views\EF\Index.cshtml" />
     <Content Include="Views\EF\Detail.cshtml" />
+    <Content Include="Views\EF\QueryPlan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

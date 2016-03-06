@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -37,6 +38,9 @@ namespace MVC5Course.Controllers
 			{
 				data = data.Where(p => p.ProductName.Contains(keyword));
 			}
+
+			//Execute T-SQL in DB
+			//db.Database.ExecuteSqlCommand("");
 
 			SaveChanges();
 			return View(data);
@@ -84,5 +88,21 @@ namespace MVC5Course.Controllers
 			SaveChanges();
 		    return RedirectToAction("Index");
 	    }
+		public ActionResult QueryPlan(int num=10)
+		{
+			//var data = db.Product.
+			//	Include(t=>t.OrderLine)
+			//	.OrderBy(p => p.ProductId);
+			//強迫轉型,所以QueryPlan OrderLine Count值為0
+			var data = db.Database.SqlQuery<Product>(@"
+			SELECT *
+			FROM dbo.Product p
+				 JOIN dbo.OrderLine o ON (p.ProductId = o.ProductId)
+                WHERE
+                 p.ProductId <@p0
+			",num);
+
+			return View(data);
+		}
     }
 }
