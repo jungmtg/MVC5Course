@@ -9,11 +9,11 @@ using MVC5Course.Models;
 
 namespace MVC5Course.Controllers
 {
-    public class EFController : Controller
-    {
+	public class EFController : Controller
+	{
 		FabricsEntities db = new FabricsEntities();
 		// GET: EF
-		public ActionResult Index(bool? IsActive,string keyword)
+		public ActionResult Index(bool? IsActive, string keyword)
 		{
 			//Object Service
 
@@ -72,37 +72,37 @@ namespace MVC5Course.Controllers
 		}
 
 		public ActionResult Detail(int id)
-	    {
-		    var data = db.Product.FirstOrDefault(p =>p.ProductId== id);
+		{
+			var data = db.Product.FirstOrDefault(p => p.ProductId == id);
 			return View(data);
-	    }
+		}
 
-	    public ActionResult Delete(int id)
-	    {
-		    var product = db.Product.Find(id);
+		public ActionResult Delete(int id)
+		{
+			var product = db.Product.Find(id);
 			//單筆移除
 			//db.Product.Remove(item);
 			//多筆移除
 			db.OrderLine.RemoveRange(product.OrderLine);
-		    db.Product.Remove(product);
+			db.Product.Remove(product);
 			SaveChanges();
-		    return RedirectToAction("Index");
-	    }
-		public ActionResult QueryPlan(int num=10)
+			return RedirectToAction("Index");
+		}
+		public ActionResult QueryPlan(int num = 10)
 		{
-			//var data = db.Product.
-			//	Include(t=>t.OrderLine)
-			//	.OrderBy(p => p.ProductId);
+			var data = db.Product.
+				Include(t => t.OrderLine)
+				.OrderBy(p => p.ProductId);
 			//強迫轉型,所以QueryPlan OrderLine Count值為0
-			var data = db.Database.SqlQuery<Product>(@"
-			SELECT *
-			FROM dbo.Product p
-				 JOIN dbo.OrderLine o ON (p.ProductId = o.ProductId)
-                WHERE
-                 p.ProductId <@p0
-			",num);
+			//var data = db.Database.SqlQuery<Product>(@"
+			//SELECT *
+			//FROM dbo.Product p
+			//	 JOIN dbo.OrderLine o ON (p.ProductId = o.ProductId)
+			//             WHERE
+			//              p.ProductId <@p0
+			//",num);
 
 			return View(data);
 		}
-    }
+	}
 }
