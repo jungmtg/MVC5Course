@@ -18,6 +18,7 @@ namespace MVC5Course.Controllers
         public ActionResult Index()
         {
 	        var data = repo.All();
+	        //var repoOL = RepositoryHelper.GetOrderLineRepository(repo.UnitOfWork);
 			//repo.Get超級複雜的資料集();
 	        return View(data);
         }
@@ -31,7 +32,7 @@ namespace MVC5Course.Controllers
             }
 	        Product product = repo.Find(id.Value);
 			
-			if (product == null && !product.IsDeleted)
+			if (product == null)
             {
                 return HttpNotFound();
             }
