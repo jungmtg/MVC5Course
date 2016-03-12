@@ -42,5 +42,10 @@ namespace MVC5Course.Controllers
 			var data = db.Product.Take(3);
 			return Json(data,JsonRequestBehavior.AllowGet);
 		}
+
+		public ActionResult Action()
+		{
+			return View();
+		}
 	}
 }

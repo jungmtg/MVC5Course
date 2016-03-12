@@ -4,15 +4,34 @@
 }
 
 <h2>Index</h2>
+<div ng-app ng-controller="MainCtrl">
+	<table class="table">
+		
+		<tr ng-repeat="item in data">
+			<td>{{item.ProductId}}</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>	
+</div>
+
+
 <button id="btnJsonTest">Get JsonTest Data</button>
 @section scripts
 {
+	<script src="~/Scripts/angular.js"></script>
 	<script>
-		
+		$scope.get = function() {
+			$http.get('/AR/JsonTest').then(function)
+		}
+
+
+		$('#btnJsonTest').bind('click', function() {
+			$.getJSON('/AR/JsonTest', '', function(data) {
+				console.log(data);
+			});
+		})
 	</script>
 }
-@*<script>
-	onclick="$.getJSON('/AR/JsonTest','',
-	function(data){console.log(data);}}
-	)"
-</script>*@
