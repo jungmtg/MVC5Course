@@ -7,43 +7,68 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
+	<h4>Product</h4>
+	<hr/>
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.ProductName)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ProductName)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Price)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Price)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Active)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Active)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Active)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Stock)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Stock)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Stock)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Stock)
+		</dd>
 
-    </dl>
+	</dl>
 </div>
+
+<h2>OrderLines</h2>
+
+<table class="table">
+	<tr>
+		<th>ProductId</th>
+		<th>ProductName</th>
+		<th>LineNumber</th>
+		<th>Qty</th>
+		<th>LineTotal</th>
+	</tr>
+	@foreach (var item in ViewBag.OrderLines)
+	{
+		<tr>
+			<td>@item.Product.ProductId</td>
+			<td>@item.Product.ProductName</td>
+			<td>@item.LineNumber</td>
+			<td>@item.Qty</td>
+			<td>@item.LineTotal</td>
+		</tr>
+	}
+</table>
+
+<hr />
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
     @Html.ActionLink("Back to List", "Index")

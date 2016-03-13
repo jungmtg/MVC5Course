@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Web.Mvc;
 using MVC5Course.Models;
 
 namespace MVC5Course.Controllers
@@ -34,7 +35,7 @@ namespace MVC5Course.Controllers
 				"image/png","GoGOGO.png");
 			//下載檔案,檔名為"GoGOGO.png"
 		}
-
+		[AjaxOnly]
 		public JsonResult JsonTest()
 		{
 			var db = new FabricsEntities();

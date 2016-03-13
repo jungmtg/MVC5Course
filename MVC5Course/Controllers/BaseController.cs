@@ -14,6 +14,8 @@ namespace MVC5Course.Controllers
 	    protected override void HandleUnknownAction(string actionName)
 	    {
 			this.Redirect("/").ExecuteResult(this.ControllerContext);
+
+			this.View("Index").ExecuteResult(this.ControllerContext);
 		}
 
 	    public ActionResult Debug()
