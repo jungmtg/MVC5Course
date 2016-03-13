@@ -28,12 +28,12 @@ namespace MVC5Course.Controllers
 			ModelState.AddModelError("Password","你登入的帳號或密碼錯誤");
 			return View();
 		}
-		[HttpPost]
 		public ActionResult Logout()
-		{
-			return RedirectToAction("Index", "Home");
-		}
-		private bool CheckLogin(string email, string password)
+         {
+             FormsAuthentication.SignOut();
+             return RedirectToAction("Index", "Home");
+         }
+	private bool CheckLogin(string email, string password)
 		{
 			return (email=="jungmtg@gmail.com" && password=="iec123")
 			;
