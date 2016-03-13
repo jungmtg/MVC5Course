@@ -45,7 +45,10 @@
 	</dl>
 </div>
 
-<h2>OrderLines</h2>
+@*@Html.Action("Index", "OrderLines", new {ProductId=Model.ProductId});*@
+@Html.Partial("../OrderLines/Index", Model.OrderLine)
+
+@*<h2>OrderLines</h2>
 
 <table class="table">
 	<tr>
@@ -65,7 +68,7 @@
 			<td>@item.LineTotal</td>
 		</tr>
 	}
-</table>
+</table>*@
 
 <hr />
 

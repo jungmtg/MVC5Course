@@ -72,25 +72,13 @@ namespace MVC5Course.Controllers
 				return HttpNotFound();
 			}
 
-			//ViewData["OrderLines"] = product.OrderLine.ToList();
+			
 			ViewBag.OrderLines = product.OrderLine.ToList();
 
 			return View(product);
 		}
-		//     public ActionResult Details(int? id)
-		//     {
-		//         if (id == null)
-		//         {
-		//             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-		//         }
-		//      Product product = repo.Find(id.Value);
-
-		//if (product == null)
-		//         {
-		//             return HttpNotFound();
-		//         }
-		//         return View(product);
-		//     }
+		
+		
 
 		// GET: Products/Create
 		public ActionResult Create()

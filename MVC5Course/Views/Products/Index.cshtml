@@ -4,7 +4,9 @@
 @{
     ViewBag.Title = "Index";
 }
-
+@section breadcrumb {
+	    <li><a href="#">產品清單</a></li>
+	}
 <h2>Index</h2>
 
 <p>
@@ -68,6 +70,7 @@
 					@Html.ActionLink("Edit", "Edit", new { id = data[i].ProductId }) |
 					@Html.ActionLink("Details", "Details", new { id = data[i].ProductId }) |
 					@Html.ActionLink("Delete", "Delete", new { id = data[i].ProductId })
+					@Html.ActionLink("OrderLines", "", new { id = data[i].ProductId })
 				</td>
 			</tr>
 		}
@@ -76,6 +79,8 @@
 
 	<button class="btn btn-primary">批次更新</button>
 			}
+<hr>
+@Html.Action("")
 
 @*<table class="table">
     <tr>

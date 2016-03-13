@@ -1,9 +1,20 @@
 ﻿@{
-    ViewBag.Title = "About";
+	ViewBag.Title = "About";
+	if (IsAjax)
+	{
+		Layout = "";
+	}
+
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+@if (Request.IsLocal)
+{
+	<div>只有在本機才顯示</div>
+}
 
 
+@Html.ActionLink(" ","Index",null,new {@class = "btn btn-primary"})
+<a href="@Url.Action("Index")" class="btn btn-primary" data-name="Will"></a>
