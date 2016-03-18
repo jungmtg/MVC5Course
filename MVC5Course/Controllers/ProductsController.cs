@@ -15,12 +15,17 @@ namespace MVC5Course.Controllers
 		//private FabricsEntities db = new FabricsEntities();
 		private ProductRepository repo = RepositoryHelper.GetProductRepository();
 		// GET: Products
-		public ActionResult Index()
+		public ActionResult Index(int? ProductId, string type)
 		{
 			var data = repo.All().Take(5);
 			//var repoOL = RepositoryHelper.GetOrderLineRepository(repo.UnitOfWork);
 			//repo.Get超級複雜的資料集();
+			ViewBag.type = type;
 
+			if (ProductId.HasValue)
+			{
+				ViewBag.SelectedProductId = ProductId.Value;
+			}
 			//String Type 強型別
 			//ViewData.Model = data;
 			//return View(ViewData.Model);
@@ -72,13 +77,13 @@ namespace MVC5Course.Controllers
 				return HttpNotFound();
 			}
 
-			
+
 			ViewBag.OrderLines = product.OrderLine.ToList();
 
 			return View(product);
 		}
-		
-		
+
+
 
 		// GET: Products/Create
 		public ActionResult Create()

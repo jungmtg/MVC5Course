@@ -2,11 +2,11 @@
 @model IEnumerable<MVC5Course.Models.Product>
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
 @section breadcrumb {
-	    <li><a href="#">產品清單</a></li>
-	}
+	<li><a href="#">產品清單</a></li>
+}
 <h2>Index</h2>
 
 <p>
@@ -70,7 +70,7 @@
 					@Html.ActionLink("Edit", "Edit", new { id = data[i].ProductId }) |
 					@Html.ActionLink("Details", "Details", new { id = data[i].ProductId }) |
 					@Html.ActionLink("Delete", "Delete", new { id = data[i].ProductId })
-					@Html.ActionLink("OrderLines", "", new { id = data[i].ProductId })
+					@Html.ActionLink("OrderLines", "Index", new { type = "OrderLines", ProductId = data[i].ProductId })
 				</td>
 			</tr>
 		}
@@ -80,42 +80,52 @@
 	<button class="btn btn-primary">批次更新</button>
 			}
 <hr>
-@Html.Action("")
-
-@*<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-       
-        <th>
-            @Html.DisplayNameFor(model => model.Stock)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-	@Html.HiddenFor()
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-	        @Html.DisplayFor(modelItem => item.Price)
-        </td>
-      
-        <td>
-            @Html.DisplayFor(modelItem => item.Stock)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
-        </td>
-    </tr>
+@if (ViewBag.SelectedProductId != null)
+{
+	if (ViewBag.type == "Details")
+	{
+		@Html.Partial("Details", ViewData["SelectedProductItem"])
+	}
+	else
+	{
+		@Html.Action("Index", "OrderLines", new { ProductId = ViewBag.SelectedProductId })
+	}
 }
 
-</table>*@
+		@*<table class="table">
+				<tr>
+					<th>
+						@Html.DisplayNameFor(model => model.ProductName)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Price)
+					</th>
+
+					<th>
+						@Html.DisplayNameFor(model => model.Stock)
+					</th>
+					<th></th>
+				</tr>
+
+			@foreach (var item in Model) {
+				@Html.HiddenFor()
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.ProductName)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Price)
+					</td>
+
+					<td>
+						@Html.DisplayFor(modelItem => item.Stock)
+					</td>
+					<td>
+						@Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
+						@Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
+						@Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
+					</td>
+				</tr>
+			}
+
+			</table>*@
