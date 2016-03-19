@@ -1,19 +1,51 @@
 ﻿@model IEnumerable<MVC5Course.Models.Client>
 
+@using PagedList
+@using PagedList.Mvc
+
+@{
+	var data = Model as IPagedList;
+}
+
 @{
 	if (IsAjax)
 	{
 		Layout = "";
 	}
 	ViewBag.Title = "Index";
+
+	var CommonAjaxOptions = new AjaxOptions()
+	{
+		UpdateTargetId = "Details",
+		LoadingElementId = "loading",
+		OnSuccess = "ajaxSuccess"
+	};
+}
+
+@if (TempData["Msg"] != null)
+{
+	<script>
+        alert('@Ajax.JavaScriptStringEncode(Convert.ToString(TempData["Msg"]))');
+	</script>
+}
+
+@section Scripts {
+	<script>
+        function ajaxSuccess() {
+            console.log('Succeed');
+        }
+	</script>
 }
 
 <h2>Index</h2>
 
 <p>
-	@*@Html.ActionLink("Create New", "Create")*@
-	@Ajax.ActionLink("Create New", "Create", new AjaxOptions() { UpdateTargetId = "Details" })
+	@Ajax.ActionLink("Create New", "Create", CommonAjaxOptions)
+	<img id="loading" src="~/Content/ajax-loader.gif" style="display: none" />
 </p>
+
+@Html.PagedListPager(data, p => Url.Action("Index", new { pageNo = p }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing("#main"))
+
 <table class="table">
 	<tr>
 		<th>
@@ -59,20 +91,22 @@
 				@Html.DisplayFor(modelItem => item.CreditRating)
 			</td>
 			<td>
-				@*@Html.ActionLink("Edit", "Edit", new { id = item.ClientId }) |
-				@Html.ActionLink("Details", "Details", new {id = item.ClientId}) |
-				@Html.ActionLink("Delete", "Delete", new { id = item.ClientId })*@
-
-				@Ajax.ActionLink("Edit", "Edit", new { id = item.ClientId },
-				new AjaxOptions() { UpdateTargetId = "Details" }) |
+				@Ajax.ActionLink("Edit", "Edit", new
+		   {
+			   id = item.ClientId,
+			   pageNo = (int)ViewBag.pageNo
+		   },
+				CommonAjaxOptions) |
 				@Ajax.ActionLink("Details", "Details", new { id = item.ClientId },
-				new AjaxOptions() { UpdateTargetId = "Details" }) |
+				CommonAjaxOptions) |
 				@Ajax.ActionLink("Delete", "Delete", new { id = item.ClientId },
-				new AjaxOptions() { UpdateTargetId = "Details" })
-
+				CommonAjaxOptions)
 			</td>
 		</tr>
 	}
 
 </table>
+
+@Html.PagedListPager(data, p => Url.Action("Index", new { pageNo = p }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing("#main"))
+
 <div id="Details"></div>
