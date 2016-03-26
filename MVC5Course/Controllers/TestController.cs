@@ -31,5 +31,29 @@ namespace MVC5Course.Controllers
 			return View();
 		}
 
+		public ActionResult MyOrder()
+		{
+			ViewData.Model = new MyOrderVM()
+			{
+				Id = 1,
+				Name = "Will",
+				Status = Status.C
+			};
+
+			return View();
+		}
+
+		public ActionResult MyOrderView()
+		{
+			ViewData.Model = new MyOrderVM()
+			{
+				Id = 1,
+				Name = "Will",
+				Status = Status.C
+			};
+
+			return View();
+		}
+
 	}
 }

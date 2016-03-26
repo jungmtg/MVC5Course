@@ -1356,6 +1356,11 @@
     <Content Include="Views\Orders1\Details.cshtml" />
     <Content Include="Views\Orders1\Edit.cshtml" />
     <Content Include="Views\Orders1\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Enum-radio.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Enum.cshtml" />
+    <Content Include="Views\Test\MyOrder.cshtml" />
+    <Content Include="Views\Test\MyOrderView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
