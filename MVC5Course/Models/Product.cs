@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
+
 namespace MVC5Course.Models
 {
     using System;
@@ -25,9 +27,12 @@ namespace MVC5Course.Models
         public Nullable<decimal> Price { get; set; }
         public Nullable<bool> Active { get; set; }
         public Nullable<decimal> Stock { get; set; }
+
+		//[JsonIgnore]//JavaScript 不輸出
         public bool IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderLine> OrderLine { get; set; }
+		//[JsonIgnore]
+		public virtual ICollection<OrderLine> OrderLine { get; set; }
     }
 }
